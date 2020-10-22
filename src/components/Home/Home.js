@@ -2,18 +2,44 @@ import React,{Component} from 'react'
 import './home.css'
 import { Typography,Input,Button,TextField} from '@material-ui/core';
 import Post from '../Post/Post'
-
+import {connect} from 'react-redux'
+import {createPost,fetchPosts} from '../../redux/actions'
  
 class Home extends Component {
   constructor(props){
     super(props)
     this.state = {
       title: '',
-      description:''
+      body:''
     }
   }
+  componentDidMount(){
+    this.props.fetchPosts();
+  }
+  changeInput = (event) =>{
+      this.setState(()=>({
+        [event.target.name]:event.target.value
+      }))
+  }
+  handlerSubmit = event => {
+    event.preventDefault();
+    const {title,body} = this.state;
+    const newPost = {
+      title,body,id:Date.now().toString()
+    }
+    this.props.createPost(newPost)
+    this.setState({
+      title:'',
+      body:'',
+    })
+    }
   
+
   render(){
+    const postsList = this.props.postsList;
+    const res = postsList.length ? (postsList.map(post=>{
+      return <Post  post={post} key={post.id}></Post> 
+    })) : <Typography style={{gridColumn:'2/3',textAlign:'center'}} color='secondary'>Нет постов</Typography> 
     return (
       <div>
           
@@ -25,22 +51,25 @@ class Home extends Component {
           required={true} 
           type='text'
           name='title'
+          value={this.state.title}
+          onChange={this.changeInput}
           ></Input>
           <TextField
             color='primary'  
-            name='description'
+            name='body'
             label="Description"
+            required={true} 
             helperText="Add description to your post"
             variant="filled"
+            value={this.state.body}
+            onChange={this.changeInput}
           />
           <Button  type='submit' style = {{width:'25%'}} variant="contained" color="primary">Create</Button>
           </form>
          
-          <Typography id='posts-count'>The number: 30</Typography>
+    <Typography id='posts-count'>The number: {postsList.length}</Typography>
           <div className='all-posts'>
-            <Post></Post>
-            <Post></Post>
-            <Post></Post>
+            {res}
           </div>
       </div>
           
@@ -49,6 +78,13 @@ class Home extends Component {
   }
 
 }
+const mapStateToProps = state => {
+  return {
+    postsList : state.posts.posts
+  }
+}
+const mapDispatchToProps = {
+  createPost, fetchPosts
+}
 
-
-export default Home
+export default connect(mapStateToProps,mapDispatchToProps)(Home)
