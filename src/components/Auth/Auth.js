@@ -23,14 +23,18 @@ class Auth extends React.Component{
   handlerSubmit = event => {
     event.preventDefault();
     const {email,password} = this.state;
-
+    const headers = {
+      "Content-Type": "application/json",                                                                                                
+      "Access-Control-Origin": "*"
+     }
     const data = {
       "email": email,
       "password": password
       }
   
-    fetch(" https://postify-api.herokuapp.com/auth/sign_in", {
+    fetch("https://postify-api.herokuapp.com/auth/sign_in", {
       method: "POST",
+      headers: headers,
       body:  JSON.stringify(data)
     })
     .then(function(response){ 
@@ -68,14 +72,11 @@ class Auth extends React.Component{
           type='password' 
           value={this.state.password}
           onChange={this.handlerChange}
-       
           ></Input>
-           <Button variant="contained" color="primary">
+          <div className='auth-form-bottom'>
+          <Button type='submit' variant="contained" color="primary">
              Sing In
             </Button>
-
-          <div className='auth-form-bottom'>
-         
             <span>Don't have an account yet?<Link to='/signup'> Sign Up!</Link></span>
             </div>
       </form>
