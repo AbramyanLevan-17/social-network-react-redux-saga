@@ -3,8 +3,7 @@ import Auth from '../components/Auth/Auth'
 import Profile from '../components/Profile/Profile'
 import SingUp from '../components/SignUp/SignUp'
 
-// let loggedIn = false;
-// let res = !loggedIn ? Auth : Home
+
 
 export const paths = [
   {

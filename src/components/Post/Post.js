@@ -1,16 +1,17 @@
 import React from 'react'
+import "./post.css"
 import { Card,CardContent,CardActions,Typography,Button } from '@material-ui/core';
 
 const Post = ({post}) => {
 
   return (
     <div>
-        <Card style={{backgroundColor:'#e0e0e0',textTransform:'capitalize'}}>
+        <Card className='item'>
           <CardContent>
             <Typography variant='h5'>
               {post.title}
             </Typography>
-            <Typography>
+            <Typography >
               {post.body}
             </Typography>
           </CardContent>
