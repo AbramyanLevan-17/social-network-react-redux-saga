@@ -2,6 +2,7 @@ import React from 'react'
 import { Avatar,Typography } from '@material-ui/core';
 import './profile.css'
 import Post from '../Post/Post';
+import {connect} from 'react-redux'
 
 const Profile = () => {
   return (
@@ -14,7 +15,7 @@ const Profile = () => {
           </div>
         </div>
         <div className='user-posts'>
-          <Post></Post>
+         
         </div>
     </div>
   )

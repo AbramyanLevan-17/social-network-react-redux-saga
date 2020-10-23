@@ -1,6 +1,7 @@
 .item{
   background-color: #e0e0e0;
   height: 100%;
+  width: inherit;
 }
 .item::first-letter {
   text-transform: capitalize;

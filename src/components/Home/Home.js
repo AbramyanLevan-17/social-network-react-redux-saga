@@ -10,7 +10,7 @@ class Home extends Component {
     super(props)
     this.state = {
       title: '',
-      body:''
+      description:''
     }
   }
   componentDidMount(){
@@ -23,14 +23,14 @@ class Home extends Component {
   }
   handlerSubmit = event => {
     event.preventDefault();
-    const {title,body} = this.state;
+    const {title,description} = this.state;
     const newPost = {
-      title,body,id:Date.now().toString()
+      title,description,id:Date.now().toString()
     }
     this.props.createPost(newPost)
     this.setState({
       title:'',
-      body:'',
+      description:'',
     })
     }
   
@@ -56,12 +56,12 @@ class Home extends Component {
           ></Input>
           <TextField
             color='primary'  
-            name='body'
+            name='description'
             label="Description"
             required={true} 
             helperText="Add description to your post"
             variant="filled"
-            value={this.state.body}
+            value={this.state.description}
             onChange={this.changeInput}
           />
           <Button  type='submit' style = {{width:'25%'}} variant="contained" color="primary">Create</Button>

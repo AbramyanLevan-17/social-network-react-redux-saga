@@ -1,5 +1,5 @@
 import {call, put, takeEvery} from 'redux-saga/effects'
-import {FETCH_POST,REQUEST_POSTS} from './redux/types'
+import {FETCH_POST,REQUEST_POSTS} from './types'
 
 
 export function*  sagaWatcher(){
@@ -11,6 +11,9 @@ function* sagaWorker(){
 }
 
 async function fetchPosts() {
-  const response = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=5')
+  const headers = JSON.parse(localStorage.getItem('headers'));
+  const response = await fetch('https://postify-api.herokuapp.com/posts',{
+      headers:headers
+  })
   return await response.json()
 }

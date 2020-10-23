@@ -11,9 +11,14 @@ import './App.css'
 import {paths} from './paths/paths'
 import {Button,Avatar} from '@material-ui/core';
 import {connect} from 'react-redux'
+import HomeIcon from '@material-ui/icons/Home';
+import {logOut} from './redux/actions'
 
-const App =({auth})=> {
-
+const App =({auth,logOut})=> {
+  auth.isAuthorized = localStorage.getItem('headers') ? true : auth.isAuthorized
+  const logOutHandler = () => {
+    logOut();
+  }
   return (
     <Router>
     <div>
@@ -21,13 +26,13 @@ const App =({auth})=> {
       {auth.isAuthorized && 
           <>
            <div className='nav-items'>
-            <Link to='/'>Home</Link>
-            <Link to='/auth'>Sign In</Link>
-            <Link to='/profile'>Profile</Link>
+             <div>
+            <Link to='/'><HomeIcon/></Link>
             </div>
-            <div className='log-out'>
-            <Avatar></Avatar>
-            <Button color='secondary'>Log Out</Button>
+            {auth.isAuthorized && (<div className='log-out'>
+            <Link to='/profile'><Avatar></Avatar></Link>
+            <Button onClick={logOutHandler} color='secondary'>Log Out</Button>
+            </div>) }
             </div>
             </>
             }
@@ -54,5 +59,8 @@ const mapStateToProps = state => {
     auth: state.auth
   } 
 }
+const mapDispatchToProps = {
+    logOut,
+}
 
-export default connect(mapStateToProps,null)(App);
+export default connect(mapStateToProps,mapDispatchToProps)(App);

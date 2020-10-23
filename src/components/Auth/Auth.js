@@ -1,7 +1,7 @@
 import React from 'react'
 import './auth.css'
 import { Input,Button,Typography } from '@material-ui/core';
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {fetchUser} from '../../redux/actions'
 
@@ -31,24 +31,32 @@ class Auth extends React.Component{
       "email": email,
       "password": password
       }
+
   
-    fetch("https://postify-api.herokuapp.com/auth/sign_in", {
+   const temp = fetch("https://postify-api.herokuapp.com/auth/sign_in", {
       method: "POST",
       headers: headers,
       body:  JSON.stringify(data)
     })
     .then(function(response){ 
-      return response.json(); 
-    })
-    .then(function(data){ 
-      console.log(data)
-    });
+     const headers = 
+        {'Access-Token':response.headers.get('Access-Token'),
+        'Client':response.headers.get('Client'),
+        'Uid':response.headers.get('Uid')}
+      return headers
+  })
+
+  this.props.fetchUser(temp)
+ 
     this.setState({
       email:'',
       password:''
     })
   }
   render(){
+    if(this.props.auth.isAuthorized) {
+      return <Redirect to='/'></Redirect>
+    }
     return (
       <form className='auth-form' onSubmit={this.handlerSubmit}>
         <Typography variant='h3'>Sign In</Typography>
