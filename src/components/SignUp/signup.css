@@ -17,3 +17,17 @@
 .signup-form button{
   margin-top: 20px;
 }
+.error{
+  color: red;
+  text-align: center;
+  width: 75%;
+  
+}
+.succes{
+  text-align: center;
+  width: 75%;
+}
+.succes a{
+  color:#3f51b5;
+  text-decoration: none;
+}

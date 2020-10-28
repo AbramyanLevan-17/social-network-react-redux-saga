@@ -1,4 +1,4 @@
-import {CREATE_POST, FETCH_POST} from './types'
+import {CREATE_POST, FETCH_POST} from '../types'
 
 const initialState = {
   posts:[],

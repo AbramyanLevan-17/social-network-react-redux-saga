@@ -1,4 +1,4 @@
-import { CREATE_POST, LOG_OUT, REQUEST_POSTS, SIGN_IN } from "./types";
+import { CREATE_POST, LOG_OUT, REQUEST_POSTS, SIGN_IN, FETCH_AUTH_USER} from "./types";
 
 export function createPost(post){
   return{
@@ -21,4 +21,13 @@ export function logOut(){
   return{
     type: LOG_OUT
   }
+}
+
+export function fetchSignUp(dataUser) {
+  return {
+    email: dataUser.email,
+    password: dataUser.password,
+    confirm: dataUser.confirm,
+    type: FETCH_AUTH_USER,
+  };
 }

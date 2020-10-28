@@ -1,5 +1,5 @@
 import {call, put, takeEvery} from 'redux-saga/effects'
-import {FETCH_POST,REQUEST_POSTS} from './types'
+import {FETCH_POST,REQUEST_POSTS} from '../types'
 
 
 export function*  sagaWatcher(){

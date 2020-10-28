@@ -6,11 +6,13 @@ import {createStore ,compose, applyMiddleware} from 'redux'
 import { rootReducer } from './redux/rootReducer';
 import {Provider} from 'react-redux'
 import createSagaMiddleware from 'redux-saga'
-import { sagaWatcher } from './redux/sagas' 
+import { sagaWatcher } from './redux/sagas/sagaPosts' 
+import sagasWatcherUserSignUp from './redux/sagas/signupSaga'
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(rootReducer,compose(applyMiddleware(sagaMiddleware),window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
 sagaMiddleware.run(sagaWatcher) 
+sagaMiddleware.run(sagasWatcherUserSignUp)
 
 ReactDOM.render(
   <React.StrictMode>

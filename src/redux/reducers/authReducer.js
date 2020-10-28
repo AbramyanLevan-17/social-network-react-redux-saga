@@ -1,4 +1,4 @@
-import { LOG_OUT, SIGN_IN } from "./types"
+import { LOG_OUT, SIGN_IN } from "../types"
 
 const initialState = {
   isAuthorized: false,
