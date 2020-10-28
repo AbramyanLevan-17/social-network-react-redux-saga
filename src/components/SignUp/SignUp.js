@@ -20,7 +20,15 @@ class SingUp extends React.Component {
       password: this.state.password,
       confirm: this.state.confirm,
     });
-    this.props.dispatch(action);
+      this.props.dispatch(action);
+      this.setState({
+        email:'',
+        password:'',
+        confirm:'',
+      })
+    
+    
+   
   }
   handlerChange = (event) =>{
     this.setState(()=>({

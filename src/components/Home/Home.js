@@ -25,7 +25,7 @@ class Home extends Component {
     event.preventDefault();
     const {title,description} = this.state;
     const newPost = {
-      title,description,id:Date.now().toString()
+      title,description
     }
     this.props.createPost(newPost)
     this.setState({

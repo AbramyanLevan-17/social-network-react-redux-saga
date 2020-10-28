@@ -3,8 +3,7 @@ import './auth.css'
 import { Input,Button,Typography } from '@material-ui/core';
 import {Link, Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {fetchUser} from '../../redux/actions'
-
+import {signIn} from '../../redux/actions'
 
 class Auth extends React.Component{
   constructor(props){
@@ -22,32 +21,36 @@ class Auth extends React.Component{
   }
   handlerSubmit = event => {
     event.preventDefault();
-    const {email,password} = this.state;
-    const headers = {
-      "Content-Type": "application/json",                                                                                                
-      "Access-Control-Origin": "*"
-     }
-    const data = {
-      "email": email,
-      "password": password
-      }
+  //   const {email,password} = this.state;
+  //   const headers = {
+  //     "Content-Type": "application/json",                                                                                                
+  //     "Access-Control-Origin": "*"
+  //    }
+  //   const data = {
+  //     "email": email,
+  //     "password": password
+  //     }
 
   
-   const temp = fetch("https://postify-api.herokuapp.com/auth/sign_in", {
-      method: "POST",
-      headers: headers,
-      body:  JSON.stringify(data)
-    })
-    .then(function(response){ 
-     const headers = 
-        {'Access-Token':response.headers.get('Access-Token'),
-        'Client':response.headers.get('Client'),
-        'Uid':response.headers.get('Uid')}
-      return headers
-  })
+  //  const temp = fetch("https://postify-api.herokuapp.com/auth/sign_in", {
+  //     method: "POST",
+  //     headers: headers,
+  //     body:  JSON.stringify(data)
+  //   })
+  //   .then(function(response){ 
+  //    const headers = 
+  //       {'Access-Token':response.headers.get('Access-Token'),
+  //       'Client':response.headers.get('Client'),
+  //       'Uid':response.headers.get('Uid')}
+  //     return headers
+  // })
 
-  this.props.fetchUser(temp)
- 
+  // this.props.fetchUser(temp)
+    const loginData = {
+      email: this.state.email,
+      password: this.state.password,
+    }
+    this.props.signIn(loginData)
     this.setState({
       email:'',
       password:''
@@ -99,7 +102,7 @@ const mapStateToProps = state => {
   }
 }
 const mapDispacthToProps ={
-    fetchUser,
+  signIn,   
 }
 
 export default connect(mapStateToProps,mapDispacthToProps)(Auth)

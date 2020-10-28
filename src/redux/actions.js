@@ -1,9 +1,10 @@
-import { CREATE_POST, LOG_OUT, REQUEST_POSTS, SIGN_IN, FETCH_AUTH_USER} from "./types";
+import { REQUEST_POST_CREATE, LOG_OUT, REQUEST_POSTS, REQUEST_SIGN_IN, FETCH_AUTH_USER} from "./types";
 
 export function createPost(post){
   return{
-    type:CREATE_POST,
-    payload: post, 
+    type:REQUEST_POST_CREATE,
+    title:post.title, 
+    description:post.description,
   }
 }
 export function fetchPosts(){
@@ -11,10 +12,12 @@ export function fetchPosts(){
       type: REQUEST_POSTS
     }
 }
-export function fetchUser(headers){
+
+export function signIn(loginData){
   return{
-    type: SIGN_IN,
-    payload: headers
+    type: REQUEST_SIGN_IN,
+    email:loginData.email,
+    password: loginData.password,
   }
 }
 export function logOut(){
