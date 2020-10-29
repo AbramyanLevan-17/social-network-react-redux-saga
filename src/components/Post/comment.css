@@ -1,0 +1,17 @@
+.comment{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+}
+.comment-info{
+  display: flex;
+  flex-direction: row;
+}
+.comment-info p{
+  padding-right: 10px;
+}
+.not-found{
+  margin-top: 10px;
+  text-align: center;
+}

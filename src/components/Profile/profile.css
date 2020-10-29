@@ -22,3 +22,10 @@
 .user-posts{
   margin-top: 15px;
 }
+.no-style {
+  text-decoration: none
+}
+
+a:hover {
+  text-decoration: none
+}

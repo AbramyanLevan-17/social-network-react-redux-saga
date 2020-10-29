@@ -26,3 +26,10 @@
   grid-gap: 20px;
 
 }
+.no-style {
+  text-decoration: none
+}
+
+a:hover {
+  text-decoration: none
+}

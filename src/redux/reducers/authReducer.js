@@ -1,8 +1,8 @@
-import { LOG_OUT, REQUEST_SIGN_IN, SIGN_IN } from "../types"
+import { LOG_OUT, SIGN_IN } from "../types"
 
 const initialState = {
   isAuthorized: false,
-  id:'',
+  data:{},
   headers:{},
   
 }
@@ -10,9 +10,9 @@ const initialState = {
 export const authReducer = (state = initialState, action) =>{
     switch(action.type){
       case SIGN_IN:
-        console.log(action)
-        return {...state, id:action.res.res.data.id, isAuthorized:true, headers: action.res.headers}
+        return {...state, data:action.res.res.data, isAuthorized:true, headers: action.res.headers}
         case LOG_OUT:
+          localStorage.removeItem('headers')
           return initialState
       default:
       return state;

@@ -8,8 +8,6 @@ export default function* sagasWatcherUserSignUp() {
 }
 
 function* sagaWorkerUserAuth(action) {
-    console.log("dataInfoAUTH")
-    console.log(action)
     const payload = yield call(fetchSignUp, action)
     yield put({type: REQUEST_AUTH_USER, payload})
 }
@@ -26,6 +24,5 @@ async function fetchSignUp(payload) {
     })
     const result = await res.json();
  
-    console.log(result)
     return result
 }

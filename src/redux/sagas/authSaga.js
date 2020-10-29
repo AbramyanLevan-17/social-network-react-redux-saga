@@ -7,7 +7,6 @@ export function* authWatcher(){
 }
 
 function* authWorker(action){
-    console.log(action)
     const res =  yield call(fetchUser,action)
     yield put({type:SIGN_IN,res})
 }
@@ -27,6 +26,8 @@ async function fetchUser(action){
         'access-token':response.headers.get('access-token'),
         'client':response.headers.get('client'),
         'uid':response.headers.get('uid'),
+        'content-type': 'application/json',
+        'access-control-allow-origin': '*',
       }}
       localStorage.setItem('headers',JSON.stringify(data.headers))
    return  data;

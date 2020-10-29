@@ -1,0 +1,42 @@
+.single-post{
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows:  auto auto;
+  margin: 0 auto;
+  width: 50%;
+  padding:20px;
+  box-shadow: 0 15px 10px #777;
+}
+.info{
+  display: flex;
+  flex-direction: column;
+}
+.info p{
+  padding: 10px;
+}
+.edit{
+  display: flex;
+  flex-direction: column;
+}
+.edit div{
+  margin-bottom: 10px;
+}
+.comments{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  grid-column: 1/-1;
+}
+.add-comment{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 15px;
+}
+.list{
+  display: flex;
+  flex-direction: column;
+}
+.hidden{
+  display: none;
+}
