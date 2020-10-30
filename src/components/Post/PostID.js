@@ -93,7 +93,7 @@ class PostID extends React.Component{
             <Button color='primary' type='submit'>Public</Button>
          
             </form>
-            <Button onClick={this.showComments} variant='contained'>Show Comments</Button>
+    <Button onClick={this.showComments} variant='contained'>Show Comments: {currentCom.length}</Button>
             <div className={this.state.class}>
               {res}
             </div>
