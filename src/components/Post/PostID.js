@@ -70,7 +70,7 @@ class PostID extends React.Component{
  }
   render(){
    
-    const {post} = this.stateppppppppppppppp
+    const {post} = this.state
     const {comments} = this.props
     const currentCom = comments.filter(comment=>{
         if(comment.commentable_id === post.id){
