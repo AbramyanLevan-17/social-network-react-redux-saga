@@ -8,8 +8,8 @@ const initialState = {
 export const authReducer = (state = initialState, action) =>{
     switch(action.type){
       case SIGN_IN:
-        if(action.res.data){
-          return {...state, data:action.res.data, isAuthorized:true}
+        if(action.res.ok){
+          return {...state, data:action.res.res.data, isAuthorized:true, }
         }
         case LOG_OUT:
           localStorage.removeItem('headers')
