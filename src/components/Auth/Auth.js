@@ -21,31 +21,7 @@ class Auth extends React.Component{
   }
   handlerSubmit = event => {
     event.preventDefault();
-  //   const {email,password} = this.state;
-  //   const headers = {
-  //     "Content-Type": "application/json",                                                                                                
-  //     "Access-Control-Origin": "*"
-  //    }
-  //   const data = {
-  //     "email": email,
-  //     "password": password
-  //     }
 
-  
-  //  const temp = fetch("https://postify-api.herokuapp.com/auth/sign_in", {
-  //     method: "POST",
-  //     headers: headers,
-  //     body:  JSON.stringify(data)
-  //   })
-  //   .then(function(response){ 
-  //    const headers = 
-  //       {'Access-Token':response.headers.get('Access-Token'),
-  //       'Client':response.headers.get('Client'),
-  //       'Uid':response.headers.get('Uid')}
-  //     return headers
-  // })
-
-  // this.props.fetchUser(temp)
     const loginData = {
       email: this.state.email,
       password: this.state.password,

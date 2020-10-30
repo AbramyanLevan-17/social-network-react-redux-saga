@@ -4,7 +4,9 @@ import {
   REQUEST_SIGN_IN, 
   FETCH_AUTH_USER,
   REQUEST_COMMENTS,
-  REQUEST_CREATE_COMMENT
+  REQUEST_CREATE_COMMENT,
+  REQUEST_PUT_POST,
+  REQUEST_DELETE_POST
 } from "./types";
 
 export function createPost(post){
@@ -52,4 +54,20 @@ export function createComment(comment){
       type: REQUEST_CREATE_COMMENT,
       comment: comment,
     }
+}
+
+export function putPost(editedPost){
+  return{
+    type:REQUEST_PUT_POST,
+    id:editedPost.id,
+    title:editedPost.title,
+    description:editedPost.description
+  }
+}
+
+export function deletePost(id){
+  return{
+    type:REQUEST_DELETE_POST,
+    id:id,
+  }
 }

@@ -15,7 +15,7 @@ const Post = ({post}) => {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button variant='contained' color='primary'>Comments</Button>
+            <Button variant='contained' color='primary'>Show more</Button>
           </CardActions>
         </Card>
   )

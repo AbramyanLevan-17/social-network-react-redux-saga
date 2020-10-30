@@ -4,7 +4,6 @@ const initialState = {
   isAuthorized: false,
   data:{},
   headers:{},
-  
 }
 
 export const authReducer = (state = initialState, action) =>{

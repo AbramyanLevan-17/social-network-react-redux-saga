@@ -1,18 +1,18 @@
-import {CREATE_POST, FETCH_POST} from '../types'
+import {CREATE_POST, FETCH_POST, PUT_POST} from '../types'
 
 const initialState = {
   posts:[],
+  post:{},
 }
 
 export const postsReducer = (state = initialState, action) => {
   switch(action.type){
-   case CREATE_POST:
-     if(action.res === 'Created'){
-       alert("The Post was successfull created")
-     }
-    return state
     case FETCH_POST: 
-    return  {...state, posts: action.payload}
+    return  {...state, posts: action.payload.reverse()}
+    case CREATE_POST:
+      return {...state, post: action.res}
+      case PUT_POST:
+        return {...state,post:action.res}
     default: return state
   }
  

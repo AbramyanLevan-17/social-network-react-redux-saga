@@ -4,10 +4,15 @@ import './profile.css'
 import Post from '../Post/Post';
 import {connect} from 'react-redux'
 import {NavLink} from 'react-router-dom'
+import {fetchPosts} from '../../redux/actions'
 class Profile extends React.Component{
+  constructor(props){
+    super(props)
+  }
 
-
-
+  componentDidMount(){
+    this.props.fetchPosts();
+  }
   render(){
     const user = this.props.auth.data
     const userPosts = this.props.posts.filter(post=>{
@@ -51,6 +56,9 @@ const mapStateToProps = (state) =>{
     posts: state.posts.posts
   }
   }
+  const mapDispatchToProps = {
+    fetchPosts,
+  }
  
 
-export default connect(mapStateToProps,null)(Profile)
+export default connect(mapStateToProps,mapDispatchToProps)(Profile)

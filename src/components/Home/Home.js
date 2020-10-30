@@ -32,6 +32,7 @@ class Home extends Component {
       title: '',
       description: '',
     })
+    this.props.fetchPosts();
   }
 
 

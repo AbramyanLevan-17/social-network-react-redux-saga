@@ -16,6 +16,11 @@ async function createComment(action){
     method:'POST',
     headers: headers,
     body: JSON.stringify(action.comment)
-  })
-    return await response.json()
+  }).then(function (response) {
+    alert("Comment was published");
+    return response
+  }).catch(function (error) {
+    alert(error.message);
+  });
+  return await response.json()
 }
