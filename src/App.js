@@ -19,7 +19,7 @@ const App = ({ auth, logOut }) => {
   const logOutHandler = () => {
     logOut();
     return (
-      <Redirect to='/'></Redirect>
+      <Redirect to='/auth'></Redirect>
     )
   }
   return (
