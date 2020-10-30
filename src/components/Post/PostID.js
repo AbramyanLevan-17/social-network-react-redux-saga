@@ -21,7 +21,7 @@ class PostID extends React.Component{
    this.props.getComments();
  }
  showComments = () =>{
-  // this.props.getComments();
+  this.props.getComments();
   this.setState({button:!this.state.button})
   this.setState({class:this.state.button ? 'list' : 'hidden'})
  } 
