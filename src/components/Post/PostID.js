@@ -11,14 +11,24 @@ class PostID extends React.Component{
    super(props)
    this.state={
       button: true,
-     class : 'hidden',
-     title: this.props.location.post.title,
-     description:this.props.location.post.description,
-     comment:'',
+      class : 'hidden',
+      title: '',
+      description:'',
+      comment:'',
+      post:{},
    }
  }
  componentDidMount(){
    this.props.getComments();
+ }
+ componentWillReceiveProps(nextProps){
+   if(nextProps.location !== this.props.location){
+     this.setState({
+       title:nextProps.location.post.title,
+       description:nextProps.location.post.description,
+       post:nextProps.location.post,
+     })
+   }
  }
  showComments = () =>{
   this.props.getComments();
@@ -60,7 +70,7 @@ class PostID extends React.Component{
  }
   render(){
    
-    const {post} = this.props.location
+    const {post} = this.stateppppppppppppppp
     const {comments} = this.props
     const currentCom = comments.filter(comment=>{
         if(comment.commentable_id === post.id){

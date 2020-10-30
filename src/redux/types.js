@@ -23,3 +23,6 @@ export const PUT_POST = 'PUT_POST'
 
 export const REQUEST_DELETE_POST = 'REQUEST_DELETE_POST';
 export const DELETE_POST = 'DELETE_POST';
+
+export const REQUEST_USERS_ME = 'REQUEST_USERS_ME';
+export const USERS_ME = 'USERS_ME'

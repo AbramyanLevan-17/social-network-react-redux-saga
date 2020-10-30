@@ -6,7 +6,8 @@ import {
   REQUEST_COMMENTS,
   REQUEST_CREATE_COMMENT,
   REQUEST_PUT_POST,
-  REQUEST_DELETE_POST
+  REQUEST_DELETE_POST,
+  REQUEST_USERS_ME
 } from "./types";
 
 export function createPost(post){
@@ -69,5 +70,10 @@ export function deletePost(id){
   return{
     type:REQUEST_DELETE_POST,
     id:id,
+  }
+}
+export function usersMe(){
+  return{
+    type:REQUEST_USERS_ME
   }
 }
