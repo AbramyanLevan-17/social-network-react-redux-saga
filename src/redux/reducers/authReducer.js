@@ -12,11 +12,10 @@ export const authReducer = (state = initialState, action) =>{
           return {...state, data:action.res.res.data, isAuthorized:true, }
         }
         case USERS_ME:
-          console.log(action)
           return {...state, data:action.res.data}
         case LOG_OUT:
           localStorage.removeItem('headers')
-          return initialState
+          return {...state, isAuthorized: false, data:{}}
       default:
       return state;
 

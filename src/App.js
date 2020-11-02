@@ -24,8 +24,7 @@ class App extends React.Component{
   render(){
     this.props.auth.isAuthorized = localStorage.getItem('headers') ? true : this.props.auth.isAuthorized
     const logOutHandler = () => {
-      this.props.logOut();
-      
+      this.props.logOut(); 
     }
     return (
       <Router>
