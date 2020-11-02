@@ -2,7 +2,7 @@ import React from 'react'
 import './postid.css'
 import {  Button, Input,TextField, Typography, } from '@material-ui/core';
 import {connect} from 'react-redux'
-import {getComments,createComment,putPost,fetchPosts,deletePost} from '../../redux/actions'
+import {getComments,createComment,putPost,fetchPosts,deletePost,getPost} from '../../redux/actions'
 import Comment from './Comment'
 
 
@@ -12,24 +12,13 @@ class PostID extends React.Component{
    this.state={
       button: true,
       class : 'hidden',
-      title: '',
-      description:'',
-      comment:'',
-      post:{},
    }
  }
  componentDidMount(){
    this.props.getComments();
+   this.props.getPost(this.props.match.params.id);
  }
- componentWillReceiveProps(nextProps){
-   if(nextProps.location !== this.props.location){
-     this.setState({
-       title:nextProps.location.post.title,
-       description:nextProps.location.post.description,
-       post:nextProps.location.post,
-     })
-   }
- }
+
  showComments = () =>{
   this.props.getComments();
   this.setState({button:!this.state.button})
@@ -70,7 +59,9 @@ class PostID extends React.Component{
  }
   render(){
    
-    const {post} = this.state
+    const {post} = this.props
+
+
     const {comments} = this.props
     const currentCom = comments.filter(comment=>{
         if(comment.commentable_id === post.id){
@@ -91,9 +82,9 @@ class PostID extends React.Component{
           </div>
           <form onSubmit={this.handleEditPost} className='edit'>
             <label>Title: </label>
-            <TextField onChange={this.handlerChange} name='title' value={this.state.title} placeholder={this.state.title}></TextField>
+            <TextField onChange={this.handlerChange} name='title' value={post.title} placeholder={post.TextField  }></TextField>
             <label>Description: </label>
-            <TextField onChange={this.handlerChange} name='description' value={this.state.description} placeholder={this.state.description}></TextField>
+            <TextField onChange={this.handlerChange} name='description' value={post.description} placeholder={post.description}></TextField>
             <Button variant='contained' color='primary' type='submit'>Save the changes</Button>
             <Button onClick={this.handlerDelete} variant='contained' color='secondary'>Delete</Button>
           </form>
@@ -117,10 +108,11 @@ class PostID extends React.Component{
 
 const mapStateToProps = state => {
   return{
-    comments: state.comments.comments
+    comments: state.comments.comments,
+    post:state.posts.post
   }
 }
 const mapDispatchToSate = {
-  getComments,createComment,putPost,fetchPosts,deletePost
+  getComments,createComment,putPost,fetchPosts,deletePost,getPost
 }
 export default connect(mapStateToProps,mapDispatchToSate)(PostID)

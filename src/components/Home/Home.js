@@ -42,7 +42,7 @@ class Home extends Component {
       return (
         <NavLink className="no-style" key={post.id} to={{ 
           pathname:`/posts/${post.id}`,
-          post: post,
+          id: post.id,
         }}>
           <Post post={post} key={post.id}></Post>
         </NavLink>

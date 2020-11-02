@@ -15,6 +15,7 @@ import {createCommentWathcer} from './redux/sagas/commenCreatComment'
 import {putPostWatcher} from './redux/sagas/putPost'
 import {deleteWatcher} from './redux/sagas/deletePostSaga'
 import {usersMeWathcer} from './redux/sagas/userMeSaga'
+import {getPostWatcher} from './redux/sagas/getPostSaga'
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(rootReducer,compose(applyMiddleware(sagaMiddleware),window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
@@ -27,6 +28,7 @@ sagaMiddleware.run(createCommentWathcer)
 sagaMiddleware.run(putPostWatcher)
 sagaMiddleware.run(deleteWatcher)
 sagaMiddleware.run(usersMeWathcer)
+sagaMiddleware.run(getPostWatcher)
 
 ReactDOM.render(
   <React.StrictMode>

@@ -1,4 +1,4 @@
-import {CREATE_POST, FETCH_POST, PUT_POST} from '../types'
+import {CREATE_POST, FETCH_POST, GET_POST, PUT_POST} from '../types'
 
 const initialState = {
   posts:[],
@@ -13,6 +13,8 @@ export const postsReducer = (state = initialState, action) => {
       return {...state, post: action.res}
       case PUT_POST:
         return {...state,post:action.res}
+        case GET_POST: 
+        return {...state, post:action.res}
     default: return state
   }
  

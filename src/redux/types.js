@@ -26,3 +26,6 @@ export const DELETE_POST = 'DELETE_POST';
 
 export const REQUEST_USERS_ME = 'REQUEST_USERS_ME';
 export const USERS_ME = 'USERS_ME'
+
+export const REQUEST_GET_POST = 'REQUEST_GET_POST'
+export const GET_POST = 'GET_POST'
