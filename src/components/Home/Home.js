@@ -32,7 +32,12 @@ class Home extends Component {
       title: '',
       description: '',
     })
-    this.props.fetchPosts();
+    
+  }
+  componentWillReceiveProps(next){
+    if(next.postsList !== this.props.postsList){
+      this.props.fetchPosts();
+    }
   }
 
 
