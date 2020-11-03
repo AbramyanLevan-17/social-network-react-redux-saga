@@ -18,8 +18,15 @@ class PostID extends React.Component{
    }
  }
  componentDidMount(){
+  this.props.getPost(this.props.match.params.id);
    this.props.getComments();
-   this.props.getPost(this.props.match.params.id);
+ }
+ componentWillReceiveProps(nextProps){
+   if(nextProps !== this.props){
+     this.setState({title:nextProps.post.title,
+      description:nextProps.post.description
+    })
+   }
  }
 
  showComments = () =>{
@@ -63,6 +70,7 @@ class PostID extends React.Component{
   render(){
    
     const {post} = this.props
+    
 
 
     const {comments} = this.props
@@ -85,9 +93,9 @@ class PostID extends React.Component{
           </div>
           <form onSubmit={this.handleEditPost} className='edit'>
             <label>Title: </label>
-            <TextField onChange={this.handlerChange} name='title' value={post.title} placeholder={post.TextField  }></TextField>
+            <TextField onChange={this.handlerChange} name='title' value={this.state.title} placeholder={this.state.title}></TextField>
             <label>Description: </label>
-            <TextField onChange={this.handlerChange} name='description' value={post.description} placeholder={post.description}></TextField>
+            <TextField onChange={this.handlerChange} name='description' value={this.state.description} placeholder={this.state.description} ></TextField>
             <Button variant='contained' color='primary' type='submit'>Save the changes</Button>
             <Button onClick={this.handlerDelete} variant='contained' color='secondary'>Delete</Button>
           </form>
