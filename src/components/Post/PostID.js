@@ -22,7 +22,9 @@ class PostID extends React.Component{
    this.props.getComments();
  }
  componentWillReceiveProps(nextProps){
-   if(nextProps !== this.props){
+   if(nextProps.post !== this.props.post){
+     console.log('next',nextProps)
+     console.log('prev',this.props)
      this.setState({
       title:nextProps.post.title,
       description:nextProps.post.description
@@ -67,7 +69,7 @@ class PostID extends React.Component{
   
  }
  handlerDelete = () =>{
-   this.props.deletePost(this.props.location.post.id);
+   this.props.deletePost(this.props.match.params.id);
    this.props.fetchPosts();
     window.history.back();
  }
