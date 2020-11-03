@@ -23,9 +23,13 @@ class PostID extends React.Component{
  }
  componentWillReceiveProps(nextProps){
    if(nextProps !== this.props){
-     this.setState({title:nextProps.post.title,
+     this.setState({
+      title:nextProps.post.title,
       description:nextProps.post.description
     })
+   }
+   if(nextProps.comments !== this.props.comments){
+    this.props.getComments();
    }
  }
 
@@ -50,7 +54,7 @@ class PostID extends React.Component{
    this.setState({
      comment:''
    })
-   this.props.getComments();
+ 
  }
  handleEditPost = event => {
    event.preventDefault();
@@ -67,6 +71,7 @@ class PostID extends React.Component{
    this.props.fetchPosts();
     window.history.back();
  }
+
   render(){
    
     const {post} = this.props
