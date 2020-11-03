@@ -5,7 +5,9 @@ import { Card,CardContent,CardActions,Typography,Button } from '@material-ui/cor
 const Post = ({post}) => {
 
   return (
-        <Card className='item'>
+  
+        <Card>
+            <div className='item'>
           <CardContent>
             <Typography variant='h5'>
               {post.title}
@@ -17,7 +19,9 @@ const Post = ({post}) => {
           <CardActions>
             <Button variant='contained' color='primary'>Show more</Button>
           </CardActions>
+          </div>
         </Card>
+    
   )
 }
 
