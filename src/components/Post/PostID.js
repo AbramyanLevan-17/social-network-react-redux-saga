@@ -12,6 +12,9 @@ class PostID extends React.Component{
    this.state={
       button: true,
       class : 'hidden',
+      comment: '',
+      title:'',
+      description:'',
    }
  }
  componentDidMount(){
@@ -33,7 +36,7 @@ class PostID extends React.Component{
    event.preventDefault();
    const comment = {
     message:this.state.comment,
-    commentable_id:this.props.location.post.id,
+    commentable_id:this.props.match.params.id,
     commentable_type: 'Comment',
    }
    this.props.createComment(comment)
@@ -45,7 +48,7 @@ class PostID extends React.Component{
  handleEditPost = event => {
    event.preventDefault();
    const editedPost = {
-     id:this.props.location.post.id,
+     id:this.props.match.params.id,
      title:this.state.title,
      description:this.state.description,
    }
