@@ -32,6 +32,6 @@ async function fetchUser(action){
       'content-type': 'application/json',
       'access-control-allow-origin': '*',
     }
-      localStorage.setItem('headers',JSON.stringify(setHeaders))
+      if(data.ok){localStorage.setItem('headers',JSON.stringify(setHeaders))}
    return  data;
 }

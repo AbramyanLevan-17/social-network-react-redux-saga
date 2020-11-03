@@ -8,9 +8,9 @@ const initialState = {
 export const authReducer = (state = initialState, action) =>{
     switch(action.type){
       case SIGN_IN:
-        if(action.res.ok){
+        if(action.res.ok === true){
           return {...state, data:action.res.res.data, isAuthorized:true, }
-        }
+        }else{alert('Invalid login credentials. Please try again.')}
         case USERS_ME:
           return {...state, data:action.res.data}
         case LOG_OUT:
